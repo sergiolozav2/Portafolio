@@ -8,7 +8,6 @@ interface TypeAnimationTextProps {
 
 export function TypeAnimationText(props: TypeAnimationTextProps) {
   const [text, setText] = useState("");
-  console.log("Render");
   useEffect(() => {
     const step = props.duration / props.text.length;
     const interval = setInterval(() => {
