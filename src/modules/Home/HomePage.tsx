@@ -8,7 +8,7 @@ import { SkillsSection } from "./Components/SkillsSection";
 export function HomePage() {
   return (
     <div className="radial-background pt-20 ">
-      <div className="flex flex-col gap-y-16 pt-12 lg:flex-row">
+      <div className="flex flex-col gap-y-16 py-12 lg:flex-row">
         <div className="flex px-8 lg:relative lg:min-h-screen lg:w-5/12 lg:pl-16">
           <div className="top-32 flex h-fit lg:max-w-96 lg:sticky">
             <WelcomeSection />
