@@ -35,6 +35,7 @@ function mapSkillToColor(name: string) {
       Dart: "#175384",
       Jest: "#B44263",
       Firebase: "#ce722b",
+      Svelte: "#E74534",
     }[name] ?? "#0e7490"
   );
 }
