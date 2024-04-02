@@ -3,7 +3,7 @@ import { Navbar } from "./modules/Shared/components/Navbar";
 
 function App() {
   return (
-    <div className="min-h-screen w-full">
+    <div className="w-full">
       <Navbar />
       <Outlet />
     </div>
