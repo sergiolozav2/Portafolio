@@ -6,8 +6,8 @@ import { CgMenuGridO } from "react-icons/cg";
 
 export function Navbar() {
   return (
-    <nav className="fixed inset-0 bottom-auto isolate z-10 bg-white/5 bg-clip-padding px-6 py-4 text-lg backdrop-blur-sm backdrop-filter md:px-8 md:py-6">
-      <div className="relative flex w-full items-center justify-between font-medium text-stone-100">
+    <nav className="fixed inset-0 bottom-auto isolate z-20 bg-white/5 bg-clip-padding px-6 py-4 text-lg backdrop-blur-sm backdrop-filter md:px-8 md:py-6">
+      <div className="relative flex w-full items-center justify-between font-semibold text-stone-100">
         <div className="flex gap-4 text-xl">
           <IoPlanet className="text-2xl" />
           <span>LozaDev</span>
