@@ -52,7 +52,7 @@ function SlideButton(props: SlideButtonProps) {
   return (
     (showLeft || showRight) && (
       <button
-        className={`absolute top-1/2 -translate-y-1/2 bg-stone-800/20 p-1.5 text-black ${alignment}`}
+        className={`absolute top-1/2 font-semibold -translate-y-1/2 bg-stone-800/20 p-1.5 text-black ${alignment}`}
         onClick={props.onClick}
       >
         {props.character}
