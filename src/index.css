@@ -4,4 +4,18 @@
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+}
+
+.scale-animation {
+  animation: scaleAnimation 0.2s forwards;
+}
+
+@keyframes scaleAnimation {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }
