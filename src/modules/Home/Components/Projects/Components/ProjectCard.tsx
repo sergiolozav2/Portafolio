@@ -1,16 +1,17 @@
 import { SkillTag } from "../../../../Shared/components/SkillTag";
+import { ProjectImage } from "./ProjectImage";
 
 type ProjectCardProps = {
   title: string;
   description: string;
-  thumbnail: string;
+  images: string[];
   skills: string[];
 };
 
 export function ProjectCard(props: ProjectCardProps) {
   return (
     <div className="flex flex-col">
-      <img className="z-10" src={props.thumbnail} />
+      <ProjectImage images={props.images} />
       <div className="mt-2 flex flex-col-reverse justify-between font-semibold sm:flex-row sm:items-end">
         <p className="text-stone-50">{props.title}</p>
       </div>
