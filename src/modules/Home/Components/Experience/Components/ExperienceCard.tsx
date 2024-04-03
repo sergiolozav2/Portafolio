@@ -16,8 +16,8 @@ export function ExperienceCard(props: ExperieceCardProps) {
       </div>
       <p className="mt-1 text-lg">{props.description}</p>
       <div className="mt-2 flex flex-wrap gap-x-2 gap-y-3">
-        {props.skills.map((skillName) => (
-          <SkillTag text={skillName} />
+        {props.skills.map((skillName, index) => (
+          <SkillTag text={skillName} key={index} />
         ))}
       </div>
     </div>
