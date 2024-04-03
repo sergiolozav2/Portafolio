@@ -1,15 +1,29 @@
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import { IoPlanet } from "react-icons/io5";
-import { AnimatedUnderlineText } from "./AnimatedUnderlineText";
 import { CgMenuGridO } from "react-icons/cg";
 import { useState } from "react";
+import { useVisibleSection } from "../hooks/useVisibleSection";
+
+const Sections = {
+  projects: "projects-section",
+  experience: "experience-section",
+  about: "about-me-section",
+};
+const sections = [Sections.projects, Sections.experience, Sections.about];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-
+  const { currentSection } = useVisibleSection(sections);
   function toggleNavbar() {
     setOpen(!open);
+  }
+
+  function scrollToSection(id: string) {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   }
   return (
     <nav
@@ -30,17 +44,29 @@ export function Navbar() {
         </div>
 
         <div
-          className={`absolute right-1/2 top-0 flex translate-x-1/2 flex-col md:flex-row md:gap-8 ${open ? `-md:bg-navbar -md:translate-y-12 -md:gap-7 -md:rounded-md -md:border -md:border-stone-800 -md:px-8 -md:py-2` : "-md:hidden"}`}
+          className={`absolute right-1/2 top-0 flex translate-x-1/2 flex-col md:flex-row md:gap-8 ${open ? `-md:bg-navbar -md:text-center -md:translate-y-12 -md:gap-7 -md:rounded-md -md:border -md:border-stone-800 -md:px-8 -md:py-2` : "-md:hidden"}`}
         >
-          <AnimatedUnderlineText>
-            <button className="whitespace-nowrap">Acerca de mí</button>
-          </AnimatedUnderlineText>
-          <AnimatedUnderlineText>
-            <button>Experiencia</button>
-          </AnimatedUnderlineText>
-          <AnimatedUnderlineText>
-            <button>Proyectos</button>
-          </AnimatedUnderlineText>
+          <div>
+            <button
+              className="whitespace-nowrap"
+              onClick={() => scrollToSection(Sections.about)}
+            >
+              Acerca de mí
+            </button>
+            {currentSection === Sections.about && <Divider />}
+          </div>
+          <div>
+            <button onClick={() => scrollToSection(Sections.experience)}>
+              Experiencia
+            </button>
+            {currentSection === Sections.experience && <Divider />}
+          </div>
+          <div>
+            <button onClick={() => scrollToSection(Sections.projects)}>
+              Proyectos
+            </button>
+            {currentSection === Sections.projects && <Divider />}
+          </div>
         </div>
         <button className="block text-3xl md:hidden" onClick={toggleNavbar}>
           <CgMenuGridO />
@@ -48,4 +74,8 @@ export function Navbar() {
       </div>
     </nav>
   );
+}
+
+function Divider() {
+  return <div className="scale-animation h-[2px] w-full bg-stone-200 "> </div>;
 }
