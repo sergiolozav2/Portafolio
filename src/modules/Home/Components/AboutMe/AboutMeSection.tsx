@@ -2,7 +2,10 @@ import { SectionTitle } from "../../../Shared/components/SectionTitle";
 
 export function AboutMeSection() {
   return (
-    <div className="flex flex-col gap-4 text-xl">
+    <section
+      className="flex scroll-m-24 flex-col gap-4 text-xl"
+      id="about-me-section"
+    >
       <SectionTitle text="> Acerca de mí" />
       <p>
         He participado en el desarrollo de múltiples proyectos con el objetivo
@@ -15,6 +18,6 @@ export function AboutMeSection() {
         como aprender constantemente sobre nuevas tecnologías y herramientas en
         mi área.
       </p>
-    </div>
+    </section>
   );
 }

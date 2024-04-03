@@ -3,7 +3,7 @@ import { SkillTag } from "../../Shared/components/SkillTag";
 
 export function SkillsSection() {
   return (
-    <div className="flex w-full flex-col gap-4 text-xl">
+    <section className="flex w-full flex-col gap-4 text-xl">
       <SectionTitle text="> Habilidades" />
       <div className="flex flex-wrap gap-x-2 gap-y-3">
         <SkillTag text="React" />
@@ -20,6 +20,6 @@ export function SkillsSection() {
         <SkillTag text="SQL" />
         <SkillTag text="Wordpress" />
       </div>
-    </div>
+    </section>
   );
 }

@@ -3,7 +3,10 @@ import { ProjectCard } from "./Components/ProjectCard";
 
 export function ProjectsSection() {
   return (
-    <div className="flex flex-col gap-4 text-xl">
+    <section
+      className="flex scroll-m-24 flex-col gap-4 text-xl"
+      id="projects-section"
+    >
       <SectionTitle text="> Proyectos" />
       <div className="flex flex-col gap-12">
         <ProjectCard
@@ -49,6 +52,6 @@ export function ProjectsSection() {
           skills={["Flutter", "Dart", "TTS", "Riverpod"]}
         />
       </div>
-    </div>
+    </section>
   );
 }

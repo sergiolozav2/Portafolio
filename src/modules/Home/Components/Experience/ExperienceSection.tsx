@@ -3,7 +3,10 @@ import { ExperienceCard } from "./Components/ExperienceCard";
 
 export function ExperienceSection() {
   return (
-    <div className="flex flex-col gap-4 text-xl">
+    <section
+      className="flex scroll-m-24 flex-col gap-4 text-xl"
+      id="experience-section"
+    >
       <SectionTitle text="> Experiencia" />
       <div className="flex flex-col gap-12">
         <ExperienceCard
@@ -25,6 +28,6 @@ export function ExperienceSection() {
           skills={["Flutter", "Dart", "Firebase", "Git"]}
         />
       </div>
-    </div>
+    </section>
   );
 }
