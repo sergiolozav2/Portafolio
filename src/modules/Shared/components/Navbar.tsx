@@ -3,11 +3,19 @@ import { FaLinkedin } from "react-icons/fa6";
 import { IoPlanet } from "react-icons/io5";
 import { AnimatedUnderlineText } from "./AnimatedUnderlineText";
 import { CgMenuGridO } from "react-icons/cg";
+import { useState } from "react";
 
 export function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  function toggleNavbar() {
+    setOpen(!open);
+  }
   return (
-    <nav className="fixed inset-0 bottom-auto isolate z-20 bg-white/5 bg-clip-padding px-6 py-4 text-lg backdrop-blur-sm backdrop-filter md:px-8 md:py-6">
-      <div className="relative flex w-full items-center justify-between font-semibold text-stone-100">
+    <nav
+      className={`bg-navbar/80 fixed inset-0 bottom-auto isolate z-20 px-6 py-4 text-lg backdrop-blur-sm md:px-8 md:py-6`}
+    >
+      <div className="relative flex w-full items-center justify-between font-semibold text-stone-200">
         <div className="flex gap-4 text-xl">
           <IoPlanet className="text-2xl" />
           <span>LozaDev</span>
@@ -21,10 +29,9 @@ export function Navbar() {
           </a>
         </div>
 
-        <div className="absolute right-1/2 top-0 hidden translate-x-1/2 gap-8 md:flex">
-          <AnimatedUnderlineText>
-            <button>Inicio</button>
-          </AnimatedUnderlineText>
+        <div
+          className={`absolute right-1/2 top-0 flex translate-x-1/2 flex-col md:flex-row md:gap-8 ${open ? `-md:bg-navbar -md:translate-y-12 -md:gap-7 -md:rounded-md -md:border -md:border-stone-800 -md:px-8 -md:py-2` : "-md:hidden"}`}
+        >
           <AnimatedUnderlineText>
             <button className="whitespace-nowrap">Acerca de mí</button>
           </AnimatedUnderlineText>
@@ -35,7 +42,7 @@ export function Navbar() {
             <button>Proyectos</button>
           </AnimatedUnderlineText>
         </div>
-        <button className="block text-3xl md:hidden">
+        <button className="block text-3xl md:hidden" onClick={toggleNavbar}>
           <CgMenuGridO />
         </button>
       </div>
