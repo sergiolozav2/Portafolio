@@ -1,11 +1,11 @@
-import { Outlet } from "react-router-dom";
 import { Navbar } from "./modules/Shared/components/Navbar";
+import { HomePage } from "./modules/Home/HomePage";
 
 function App() {
   return (
     <div className="w-full">
       <Navbar />
-      <Outlet />
+      <HomePage />
     </div>
   );
 }
