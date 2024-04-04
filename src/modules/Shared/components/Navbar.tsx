@@ -30,11 +30,15 @@ export function Navbar() {
       className={`fixed inset-0 bottom-auto isolate z-20 bg-navbar/80 px-6 py-4 text-lg backdrop-blur-sm md:px-8 md:py-6`}
     >
       <div className="relative flex w-full items-center justify-between font-semibold text-stone-200">
-        <div className="flex gap-4 text-xl">
+        <div className="flex gap-4 text-xl" aria-label="Logo LozaDev">
           <IoPlanet className="text-2xl" />
           <span>LozaDev</span>
         </div>
-        <button className="block text-3xl md:hidden" onClick={toggleNavbar}>
+        <button
+          className="block text-3xl md:hidden"
+          onClick={toggleNavbar}
+          aria-label="Abrir menu"
+        >
           <CgMenuGridO />
         </button>
         <div
