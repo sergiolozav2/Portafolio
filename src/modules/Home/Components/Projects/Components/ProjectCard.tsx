@@ -1,10 +1,11 @@
 import { SkillTag } from "../../../../Shared/components/SkillTag";
+import { ImageType } from "../Types/ImageType";
 import { ProjectImage } from "./ProjectImage";
 
 type ProjectCardProps = {
   title: string;
   description: string;
-  images: string[];
+  images: ImageType[];
   skills: string[];
 };
 

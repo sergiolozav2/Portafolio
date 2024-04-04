@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { ImageType } from "../Types/ImageType";
 
 type ProjectImageProps = {
-  images: string[];
+  images: ImageType[];
 };
 export function ProjectImage(props: ProjectImageProps) {
   const [imageIndex, setImageIndex] = useState(0);
@@ -15,9 +16,10 @@ export function ProjectImage(props: ProjectImageProps) {
     if (imageIndex === 0) return;
     setImageIndex(imageIndex - 1);
   }
+  const image = props.images[imageIndex]
   return (
     <div className="relative z-10">
-      <img className="rounded-md" src={props.images[imageIndex]} />
+      <img className="rounded-md" src={image.url} alt={image.alt} />
       <SlideButton
         character=">"
         side="right"
