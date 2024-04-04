@@ -17,7 +17,7 @@ export function ExperienceSection() {
         />
         <ExperienceCard
           title="Desarrollador Frontend · SoyYo Digital"
-          timeframe="Mar 2022 - Ago 2023"
+          timeframe="Mar 2023 - Ago 2023"
           description="Diseñé y desarrollé la interfaz de SoyYoDigital para tarjetas digitales de presentación. Adicionalmente utilicé wordpress para manejar la página de la empresa."
           skills={["React", "Jest", "Wordpress", "Git"]}
         />
