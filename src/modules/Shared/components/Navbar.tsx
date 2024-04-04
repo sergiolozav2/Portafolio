@@ -27,24 +27,18 @@ export function Navbar() {
   }
   return (
     <nav
-      className={`bg-navbar/80 fixed inset-0 bottom-auto isolate z-20 px-6 py-4 text-lg backdrop-blur-sm md:px-8 md:py-6`}
+      className={`fixed inset-0 bottom-auto isolate z-20 bg-navbar/80 px-6 py-4 text-lg backdrop-blur-sm md:px-8 md:py-6`}
     >
       <div className="relative flex w-full items-center justify-between font-semibold text-stone-200">
         <div className="flex gap-4 text-xl">
           <IoPlanet className="text-2xl" />
           <span>LozaDev</span>
         </div>
-        <div className="hidden gap-4 text-2xl md:flex">
-          <a href="https://www.linkedin.com/in/sergio-loza/" target="_blank">
-            <FaLinkedin />
-          </a>
-          <a href="https://github.com/sergiolozav2" target="_blank">
-            <FaGithub />
-          </a>
-        </div>
-
+        <button className="block text-3xl md:hidden" onClick={toggleNavbar}>
+          <CgMenuGridO />
+        </button>
         <div
-          className={`absolute right-1/2 top-0 flex translate-x-1/2 flex-col md:flex-row md:gap-8 ${open ? `-md:bg-navbar -md:text-center -md:translate-y-12 -md:gap-7 -md:rounded-md -md:border -md:border-stone-800 -md:px-8 -md:py-2` : "-md:hidden"}`}
+          className={`absolute right-1/2 top-0 flex translate-x-1/2 flex-col md:flex-row md:gap-8 ${open ? `-md:translate-y-12 -md:gap-7 -md:rounded-md -md:border -md:border-stone-800 -md:bg-navbar -md:px-8 -md:py-2 -md:text-center` : "-md:hidden"}`}
         >
           <div>
             <button
@@ -68,9 +62,14 @@ export function Navbar() {
             {currentSection === Sections.projects && <Divider />}
           </div>
         </div>
-        <button className="block text-3xl md:hidden" onClick={toggleNavbar}>
-          <CgMenuGridO />
-        </button>
+        <div className="hidden gap-4 text-2xl md:flex">
+          <a href="https://www.linkedin.com/in/sergio-loza/" target="_blank">
+            <FaLinkedin />
+          </a>
+          <a href="https://github.com/sergiolozav2" target="_blank">
+            <FaGithub />
+          </a>
+        </div>
       </div>
     </nav>
   );
