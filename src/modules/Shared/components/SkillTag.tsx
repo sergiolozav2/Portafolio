@@ -18,9 +18,9 @@ export function SkillTag(props: SkillTagProps) {
 function mapSkillToColor(name: string) {
   return (
     {
-      React: "#2d7c9c",
-      Javascript: "#d97706",
-      HTML: "#e45132",
+      React: "#28708C",
+      Javascript: "#9F5704",
+      HTML: "#BD4027",
       CSS: "#9333ea",
       Tailwind: "#1d4ed8",
       Git: "#44403c",
@@ -28,14 +28,14 @@ function mapSkillToColor(name: string) {
       Express: "#15803d",
       NestJS: "#0c0a09",
       Linux: "#c2410c",
-      SQL: "#dc2626",
-      Wordpress: "#0284c7",
-      Cypress: "#2f8e65",
+      SQL: "#C22222",
+      Wordpress: "#0273AC",
+      Cypress: "#287A56",
       Flutter: "#125D9F",
       Dart: "#175384",
       Jest: "#B44263",
-      Firebase: "#ce722b",
-      Svelte: "#E74534",
+      Firebase: "#A45A21",
+      Svelte: "#BF3A2C",
     }[name] ?? "#0e7490"
   );
 }
