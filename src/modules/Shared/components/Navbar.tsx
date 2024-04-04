@@ -67,10 +67,18 @@ export function Navbar() {
           </div>
         </div>
         <div className="hidden gap-4 text-2xl md:flex">
-          <a href="https://www.linkedin.com/in/sergio-loza/" target="_blank">
+          <a
+            href="https://www.linkedin.com/in/sergio-loza/"
+            target="_blank"
+            aria-label="LinkedIn"
+          >
             <FaLinkedin />
           </a>
-          <a href="https://github.com/sergiolozav2" target="_blank">
+          <a
+            href="https://github.com/sergiolozav2"
+            target="_blank"
+            aria-label="Github"
+          >
             <FaGithub />
           </a>
         </div>
