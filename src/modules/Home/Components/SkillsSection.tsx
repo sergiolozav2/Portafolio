@@ -7,18 +7,22 @@ export function SkillsSection() {
       <SectionTitle text="> Habilidades" />
       <div className="flex flex-wrap gap-x-2 gap-y-3">
         <SkillTag text="React" />
+        <SkillTag text="Node.js" />
         <SkillTag text="Javascript" />
-        <SkillTag text="HTML" />
+        <SkillTag text="C#" />
+        <SkillTag text="Docker" />
+        <SkillTag text="AWS" /> <SkillTag text="Linux" />
         <SkillTag text="CSS" />
         <SkillTag text="Tailwind" />
-        <SkillTag text="Linux" />
         <SkillTag text="Git" />
         <SkillTag text="Github" />
         <SkillTag text="Express" />
-        <SkillTag text="NestJS" />
-        <SkillTag text="Cypress" />
         <SkillTag text="SQL" />
         <SkillTag text="Wordpress" />
+        <SkillTag text="Elixir" />
+        <SkillTag text="HTML" />
+        <SkillTag text="Github Actions" />
+        <SkillTag text="Playwright" />
       </div>
     </section>
   );

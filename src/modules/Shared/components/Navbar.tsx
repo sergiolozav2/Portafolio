@@ -27,7 +27,7 @@ export function Navbar() {
   }
   return (
     <nav
-      className={`fixed inset-0 bottom-auto isolate z-20 bg-navbar/80 px-6 py-4 text-lg backdrop-blur-sm md:px-8 md:py-6`}
+      className={`bg-primary/80 fixed inset-0 bottom-auto isolate z-20 px-6 py-4 text-lg backdrop-blur-sm md:px-8 md:py-6`}
     >
       <div className="relative flex w-full items-center justify-between font-semibold text-stone-200">
         <div className="flex gap-4 text-xl" aria-label="Logo LozaDev">
@@ -42,11 +42,11 @@ export function Navbar() {
           <CgMenuGridO />
         </button>
         <div
-          className={`absolute right-1/2 top-0 flex translate-x-1/2 flex-col md:flex-row md:gap-8 ${open ? `-md:translate-y-12 -md:gap-7 -md:rounded-md -md:border -md:border-stone-800 -md:bg-navbar -md:px-8 -md:py-2 -md:text-center` : "-md:hidden"}`}
+          className={`absolute top-0 right-1/2 flex translate-x-1/2 flex-col md:flex-row md:gap-8 ${open ? "bg-primary translate-y-12 gap-7 rounded-md border border-stone-800 px-8 py-2 text-center md:translate-y-0 md:gap-8 md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0 md:text-left" : "hidden md:flex"}`}
         >
           <div>
             <button
-              className="whitespace-nowrap"
+              className="bg-pri whitespace-nowrap"
               onClick={() => scrollToSection(Sections.about)}
             >
               Acerca de mí
@@ -88,5 +88,5 @@ export function Navbar() {
 }
 
 function Divider() {
-  return <div className="scale-animation h-[2px] w-full bg-stone-200 "> </div>;
+  return <div className="scale-animation h-[2px] w-full bg-stone-200"> </div>;
 }

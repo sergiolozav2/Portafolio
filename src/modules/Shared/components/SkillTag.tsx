@@ -19,7 +19,7 @@ function mapSkillToColor(name: string) {
   return (
     {
       React: "#28708C",
-      Javascript: "#9F5704",
+      Javascript: "#DC5704",
       HTML: "#BD4027",
       CSS: "#9333ea",
       Tailwind: "#1d4ed8",
@@ -36,6 +36,13 @@ function mapSkillToColor(name: string) {
       Jest: "#B44263",
       Firebase: "#A45A21",
       Svelte: "#BF3A2C",
+      "Node.js": "#15803d",
+      "C#": "#258fc4",
+      Elixir: "#8029d1",
+      Docker: "#1793d1",
+      AWS: "#f79c09",
+      "Github Actions": "#9333ea",
+      Playwright: "#ed2d49",
     }[name] ?? "#0e7490"
   );
 }

@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { ImageType } from "../Types/ImageType";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/src/components/Dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { ArrowLeft } from "lucide-react";
 
 type ProjectImageProps = {
   images: ImageType[];
 };
 export function ProjectImage(props: ProjectImageProps) {
   const [imageIndex, setImageIndex] = useState(0);
-
+  const [open, setOpen] = useState(false);
   function handleNext() {
     if (imageIndex === props.images.length - 1) return;
     setImageIndex(imageIndex + 1);
@@ -16,22 +24,70 @@ export function ProjectImage(props: ProjectImageProps) {
     if (imageIndex === 0) return;
     setImageIndex(imageIndex - 1);
   }
-  const image = props.images[imageIndex]
   return (
     <div className="relative z-10">
-      <img className="rounded-md" src={image.url} alt={image.alt} />
+      <Dialog open={open} onOpenChange={setOpen}>
+        <ProjectImageContent
+          images={props.images}
+          index={imageIndex}
+          handleNext={handleNext}
+          handleGoBack={handleGoBack}
+          canExpand={true}
+        />
+        <VisuallyHidden>
+          <DialogTitle>Image</DialogTitle>
+        </VisuallyHidden>
+        <DialogContent
+          showCloseButton={false}
+          className="min-w-[80vw] bg-transparent"
+        >
+          <ProjectImageContent
+            images={props.images}
+            index={imageIndex}
+            handleNext={handleNext}
+            handleGoBack={handleGoBack}
+          />
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
+
+function ProjectImageContent({
+  images,
+  index,
+  handleNext,
+  handleGoBack,
+  canExpand,
+}: {
+  images: ImageType[];
+  index: number;
+  handleNext: () => void;
+  handleGoBack: () => void;
+  canExpand?: boolean;
+}) {
+  const image = images[index];
+  const img = <img className="rounded-md" src={image.url} alt={image.alt} />;
+  return (
+    <div className="relative z-10">
+      {canExpand ? (
+        <DialogTrigger className="cursor-pointer">{img}</DialogTrigger>
+      ) : (
+        img
+      )}
+
       <SlideButton
         character=">"
         side="right"
-        max={props.images.length}
-        position={imageIndex}
+        max={images.length}
+        position={index}
         onClick={handleNext}
       />
       <SlideButton
         character="<"
         side="left"
-        max={props.images.length}
-        position={imageIndex}
+        max={images.length}
+        position={index}
         onClick={handleGoBack}
       />
     </div>
@@ -54,10 +110,14 @@ function SlideButton(props: SlideButtonProps) {
   return (
     (showLeft || showRight) && (
       <button
-        className={`absolute top-1/2 font-semibold -translate-y-1/2 bg-stone-800/20 p-1.5 text-black ${alignment}`}
+        className={`absolute top-1/2 mx-4 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-stone-800/20 font-semibold text-black ${alignment}`}
         onClick={props.onClick}
       >
-        {props.character}
+        {props.side === "left" ? (
+          <ArrowLeft />
+        ) : (
+          <ArrowLeft className="rotate-180" />
+        )}
       </button>
     )
   );
