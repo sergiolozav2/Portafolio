@@ -15,7 +15,6 @@ export function SkillsSection() {
         <SkillTag text="CSS" />
         <SkillTag text="Tailwind" />
         <SkillTag text="Git" />
-        <SkillTag text="Github" />
         <SkillTag text="Express" />
         <SkillTag text="SQL" />
         <SkillTag text="Wordpress" />

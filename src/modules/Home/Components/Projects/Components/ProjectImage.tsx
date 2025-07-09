@@ -39,7 +39,7 @@ export function ProjectImage(props: ProjectImageProps) {
         </VisuallyHidden>
         <DialogContent
           showCloseButton={false}
-          className="min-w-[80vw] bg-transparent"
+          className="min-w-[90vw] bg-transparent p-0"
         >
           <ProjectImageContent
             images={props.images}
@@ -67,7 +67,14 @@ function ProjectImageContent({
   canExpand?: boolean;
 }) {
   const image = images[index];
-  const img = <img className="rounded-md" src={image.url} alt={image.alt} />;
+  const img = (
+    <img
+      className="rounded-md"
+      loading="lazy"
+      src={image.url}
+      alt={image.alt}
+    />
+  );
   return (
     <div className="relative z-10">
       {canExpand ? (
@@ -77,14 +84,12 @@ function ProjectImageContent({
       )}
 
       <SlideButton
-        character=">"
         side="right"
         max={images.length}
         position={index}
         onClick={handleNext}
       />
       <SlideButton
-        character="<"
         side="left"
         max={images.length}
         position={index}
@@ -98,7 +103,6 @@ type SlideButtonProps = {
   position: number;
   max: number;
   side: "left" | "right";
-  character: string;
   onClick: () => void;
 };
 function SlideButton(props: SlideButtonProps) {
@@ -110,7 +114,7 @@ function SlideButton(props: SlideButtonProps) {
   return (
     (showLeft || showRight) && (
       <button
-        className={`absolute top-1/2 mx-4 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-stone-800/20 font-semibold text-black ${alignment}`}
+        className={`absolute top-1/2 mx-4 flex size-12 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-stone-800/20 font-semibold text-black transition-colors hover:bg-stone-800/30 ${alignment}`}
         onClick={props.onClick}
       >
         {props.side === "left" ? (

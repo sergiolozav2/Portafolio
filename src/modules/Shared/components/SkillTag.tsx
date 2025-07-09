@@ -40,8 +40,8 @@ function mapSkillToColor(name: string) {
       "C#": "#258fc4",
       Elixir: "#8029d1",
       Docker: "#1793d1",
-      AWS: "#f79c09",
-      "Github Actions": "#9333ea",
+      AWS: "#e27c09",
+      "Github Actions": "#44403c",
       Playwright: "#ed2d49",
     }[name] ?? "#0e7490"
   );
