@@ -1,6 +1,6 @@
 import { SectionTitle } from "../../../Shared/components/SectionTitle";
 import { ExperienceCard } from "./Components/ExperienceCard";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function ExperienceSection() {
   const { t } = useTranslation();
