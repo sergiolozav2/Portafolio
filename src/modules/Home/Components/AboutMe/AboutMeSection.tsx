@@ -1,23 +1,24 @@
+import { Trans, useTranslation } from "react-i18next";
 import { SectionTitle } from "../../../Shared/components/SectionTitle";
 
 export function AboutMeSection() {
+  const { t } = useTranslation();
   return (
     <section
-      className="flex scroll-m-24 flex-col gap-4 text-xl"
+      className="flex scroll-m-24 flex-col gap-4 text-lg"
       id="about-me-section"
     >
-      <SectionTitle text="> Acerca de mí" />
+      <SectionTitle text={`${t("about_me_title")}`} />
       <p>
-        He participado en el desarrollo de múltiples proyectos con el objetivo
-        de crear <strong className="font-semibold">productos digitales</strong>{" "}
-        o <strong className="font-semibold">digitalizar procesos</strong> dentro
-        de una empresa.
+        <Trans
+          i18nKey="about_me_paragraph_1"
+          components={[
+            <strong className="font-medium text-stone-100" />,
+            <strong className="font-medium text-stone-100" />,
+          ]}
+        />
       </p>
-      <p>
-        Disfruto el arte de construir aplicaciones robustas y escalables, así
-        como aprender constantemente sobre nuevas tecnologías y herramientas en
-        mi área.
-      </p>
+      <p>{t("about_me_paragraph_2")}</p>
     </section>
   );
 }

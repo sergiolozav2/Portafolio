@@ -3,7 +3,7 @@ import { HomePage } from "./modules/Home/HomePage";
 
 function App() {
   return (
-    <div className="w-full">
+    <div className="relative w-full">
       <Navbar />
       <HomePage />
     </div>

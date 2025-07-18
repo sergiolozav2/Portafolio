@@ -1,35 +1,37 @@
 import { SectionTitle } from "../../../Shared/components/SectionTitle";
 import { ProjectCard } from "./Components/ProjectCard";
+import { useTranslation } from "react-i18next";
 
 export function ProjectsSection() {
+  const { t } = useTranslation();
   return (
     <section
       className="flex scroll-m-24 flex-col gap-4 text-xl"
       id="projects-section"
     >
-      <SectionTitle text="> Proyectos" />
-      <div className="flex flex-col gap-12">
+      <SectionTitle text={`${t("projects_title")}`} />
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-[repeat(auto-fit,minmax(350px,1fr))]">
         <ProjectCard
-          title="SoyYo - Tarjeta de presentación digital"
+          title={t("projects_soyyo_title")}
           images={[
             {
               url: "/assets/images/projects/soyyo-project.png",
-              alt: "interfaz soy yo",
+              alt: t("projects_soyyo_img_alt"),
             },
           ]}
-          description="Aplicación web para presentación digital, totalmente personalizable y responsiva para todo tipo de dispositivos. Incluye un apartado de administración para el manejo de usuarios."
+          description={t("projects_soyyo_desc")}
           skills={["React", "HTML", "CSS", "Jest", "Git"]}
         />
 
         <ProjectCard
-          title="Proyecto personal · PreciosBo"
+          title={t("projects_preciosbo_title")}
           images={[
             {
               url: "/assets/images/projects/precios-bo-project.png",
-              alt: "interfaz preciosbo",
+              alt: t("projects_preciosbo_img_alt"),
             },
           ]}
-          description="Buscador de productos en distintas tiendas online de Bolivia para comparar los precios. Utiliza un servidor hecho con Fastify para obtener los datos y enviarlos al sitio web."
+          description={t("projects_preciosbo_desc")}
           skills={[
             "React",
             "Tailwind",
@@ -41,40 +43,40 @@ export function ProjectsSection() {
           ]}
         />
         <ProjectCard
-          title="Hackaton · Dashboard de CaimanTec"
+          title={t("projects_caiman_title")}
           images={[
             {
               url: "/assets/images/projects/caiman-project.png",
-              alt: "interfaz dashboard caimatec",
+              alt: t("projects_caiman_img_alt"),
             },
           ]}
-          description="Dashboard funcional con conexión a Supabase, muestra estadísticas de un chatbot autónomo que responde y clasifica las solicitudes de clientes que se comunican por Whatsapp."
+          description={t("projects_caiman_desc")}
           skills={["Svelte", "Tailwind", "Javascript", "HTML", "Supabase"]}
         />
         <ProjectCard
-          title="Proyecto personal [Solo interfaz] · Micro"
+          title={t("projects_micro_title")}
           images={[
             {
               url: "/assets/images/projects/micro-project-2.png",
-              alt: "interfaz mapa micro",
+              alt: t("projects_micro_img_alt_1"),
             },
             {
               url: "/assets/images/projects/micro-project-1.png",
-              alt: "interfaz panel administrador micro",
+              alt: t("projects_micro_img_alt_2"),
             },
           ]}
-          description="Aplicación web para facilitar el uso del transporte público en Santa Cruz. Encuentra la mejor ruta del transporte público y permite administrar la información de las líneas de transporte."
+          description={t("projects_micro_desc")}
           skills={["React", "Tailwind", "HTML", "CSS", "NestJS"]}
         />
         <ProjectCard
-          title="Proyecto personal · Aplicación de TTS"
+          title={t("projects_tts_title")}
           images={[
             {
               url: "/assets/images/projects/tts-project.png",
-              alt: "interfaz móvil TTS",
+              alt: t("projects_tts_img_alt"),
             },
           ]}
-          description="Aplicación móvil para convertir texto a sonido, permite guardar frases favoritas para facilitar su acceso. Lo realicé mientras estaba enfermo y no podría usar mi voz para hablar."
+          description={t("projects_tts_desc")}
           skills={["Flutter", "Dart", "TTS", "Riverpod"]}
         />
       </div>

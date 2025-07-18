@@ -10,11 +10,11 @@ type ExperieceCardProps = {
 export function ExperienceCard(props: ExperieceCardProps) {
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col-reverse justify-between font-semibold sm:flex-row sm:items-end">
-        <p className="text-stone-50">{props.title}</p>
-        <p className="text-sm text-stone-300">{props.timeframe}</p>
+      <div className="flex flex-col-reverse justify-between font-medium text-stone-100 sm:flex-row sm:items-end">
+        <p className="">{props.title}</p>
+        <p className="text-sm">{props.timeframe}</p>
       </div>
-      <ul className="mt-1 list-disc pl-5 text-lg text-stone-200">
+      <ul className="mt-1 list-disc pl-5 text-lg">
         {props.bulletpoints.map((point, index) => (
           <li key={index}>{point}</li>
         ))}

@@ -69,7 +69,7 @@ function ProjectImageContent({
   const image = images[index];
   const img = (
     <img
-      className="rounded-md"
+      className="aspect-[16/10] rounded-md object-cover"
       loading="lazy"
       src={image.url}
       alt={image.alt}

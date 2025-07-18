@@ -4,17 +4,21 @@ import { IoPlanet } from "react-icons/io5";
 import { CgMenuGridO } from "react-icons/cg";
 import { useState } from "react";
 import { useVisibleSection } from "../hooks/useVisibleSection";
+import { LanguagePicker } from "./LanguagePicker";
+import { useTranslation } from "react-i18next";
 
 const Sections = {
   projects: "projects-section",
   experience: "experience-section",
   about: "about-me-section",
-};
+} as const;
 const sections = [Sections.projects, Sections.experience, Sections.about];
+type SectionKeys = (typeof sections)[number];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const { currentSection } = useVisibleSection(sections);
+  const { t } = useTranslation();
   function toggleNavbar() {
     setOpen(!open);
   }
@@ -25,19 +29,23 @@ export function Navbar() {
       section.scrollIntoView({ behavior: "smooth" });
     }
   }
+
+  function isCurrentSection(section: SectionKeys) {
+    return currentSection === section;
+  }
   return (
     <nav
-      className={`bg-primary/80 fixed inset-0 bottom-auto isolate z-20 px-6 py-4 text-lg backdrop-blur-sm md:px-8 md:py-6`}
+      className={`bg-primary/50 fixed inset-0 bottom-auto isolate z-20 px-6 py-4 text-lg backdrop-blur-sm md:px-8 md:py-6`}
     >
-      <div className="relative flex w-full items-center justify-between font-semibold text-stone-200">
-        <div className="flex gap-4 text-xl" aria-label="Logo LozaDev">
+      <div className="relative flex w-full items-center justify-between font-medium text-stone-100">
+        <div className="flex gap-4 text-xl" aria-label={t("navbar.logo")}>
           <IoPlanet className="text-2xl" />
-          <span>LozaDev</span>
+          <span>{t("navbar.logo")}</span>
         </div>
         <button
           className="block text-3xl md:hidden"
           onClick={toggleNavbar}
-          aria-label="Abrir menu"
+          aria-label={t("navbar.menu")}
         >
           <CgMenuGridO />
         </button>
@@ -46,41 +54,38 @@ export function Navbar() {
         >
           <div>
             <button
-              className="bg-pri whitespace-nowrap"
+              className={`cursor-pointer whitespace-nowrap transition-opacity ${isCurrentSection(Sections.about) ? "opacity-100" : "opacity-80"}`}
               onClick={() => scrollToSection(Sections.about)}
             >
-              Acerca de mí
+              {t("navbar.about")}
             </button>
-            {currentSection === Sections.about && <Divider />}
+            {isCurrentSection(Sections.about) && <Divider />}
           </div>
           <div>
-            <button onClick={() => scrollToSection(Sections.experience)}>
-              Experiencia
+            <button
+              className={`cursor-pointer whitespace-nowrap transition-opacity ${isCurrentSection(Sections.experience) ? "opacity-100" : "opacity-80"}`}
+              onClick={() => scrollToSection(Sections.experience)}
+            >
+              {t("navbar.experience")}
             </button>
-            {currentSection === Sections.experience && <Divider />}
+            {isCurrentSection(Sections.experience) && <Divider />}
           </div>
           <div>
-            <button onClick={() => scrollToSection(Sections.projects)}>
-              Proyectos
+            <button
+              className={`cursor-pointer whitespace-nowrap transition-opacity ${isCurrentSection(Sections.projects) ? "opacity-100" : "opacity-80"}`}
+              onClick={() => scrollToSection(Sections.projects)}
+            >
+              {t("navbar.projects")}
             </button>
-            {currentSection === Sections.projects && <Divider />}
+            {isCurrentSection(Sections.projects) && <Divider />}
+          </div>
+
+          <div className="mx-auto flex gap-4 text-3xl md:hidden">
+            <IconActionsSection />
           </div>
         </div>
         <div className="hidden gap-4 text-2xl md:flex">
-          <a
-            href="https://www.linkedin.com/in/sergio-loza/"
-            target="_blank"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://github.com/sergiolozav2"
-            target="_blank"
-            aria-label="Github"
-          >
-            <FaGithub />
-          </a>
+          <IconActionsSection />
         </div>
       </div>
     </nav>
@@ -89,4 +94,26 @@ export function Navbar() {
 
 function Divider() {
   return <div className="scale-animation h-[2px] w-full bg-stone-200"> </div>;
+}
+
+function IconActionsSection() {
+  return (
+    <>
+      <LanguagePicker />
+      <a
+        href="https://www.linkedin.com/in/sergio-loza/"
+        target="_blank"
+        aria-label="LinkedIn"
+      >
+        <FaLinkedin />
+      </a>
+      <a
+        href="https://github.com/sergiolozav2"
+        target="_blank"
+        aria-label="Github"
+      >
+        <FaGithub />
+      </a>
+    </>
+  );
 }

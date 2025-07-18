@@ -7,23 +7,29 @@ import { SkillsSection } from "./Components/SkillsSection";
 import { ProjectsSection } from "./Components/Projects/ProjectsSection";
 
 export function HomePage() {
+  const containerSpacing = "max-w-screen-xl mx-auto px-4 py-12 md:px-8";
   return (
-    <div className="radial-background pt-20 ">
-      <div className="flex flex-col gap-y-16 py-12 lg:flex-row">
-        <div className="flex justify-center px-8 lg:relative lg:min-h-screen lg:w-5/12 lg:pl-16">
-          <div className="top-32 flex h-fit w-full lg:sticky lg:max-w-96">
+    <div className="radial-background pt-20 text-stone-300">
+      <div
+        className={`flex w-full ${containerSpacing} flex-col gap-y-16 lg:flex-row`}
+      >
+        <div className="flex w-full justify-center lg:relative lg:min-h-screen">
+          <div className="top-32 flex h-fit w-full sm:min-w-96 lg:sticky">
             <WelcomeSection />
           </div>
         </div>
-        <div className="flex flex-col items-center gap-16 px-8 text-stone-300 lg:w-1/2">
+        <div className="flex w-full flex-col items-center">
           <div className="flex flex-col items-center gap-16 lg:max-w-xl">
             <AboutMeSection />
             <SkillsSection />
             <ExperienceSection />
-            <ProjectsSection />
           </div>
         </div>
       </div>
+      <div className={containerSpacing}>
+        <ProjectsSection />
+      </div>
+
       <StarsBackground />
     </div>
   );
