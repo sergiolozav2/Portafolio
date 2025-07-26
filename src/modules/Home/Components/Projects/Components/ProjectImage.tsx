@@ -39,7 +39,7 @@ export function ProjectImage(props: ProjectImageProps) {
         </VisuallyHidden>
         <DialogContent
           showCloseButton={false}
-          className="min-w-[90vw] bg-transparent p-0"
+          className="flex min-w-[90vw] items-center justify-center bg-transparent p-0"
         >
           <ProjectImageContent
             images={props.images}
@@ -69,14 +69,14 @@ function ProjectImageContent({
   const image = images[index];
   const img = (
     <img
-      className="aspect-[16/10] rounded-md object-cover"
+      className="aspect-[16/10] w-full rounded-md object-cover"
       loading="lazy"
       src={image.url}
       alt={image.alt}
     />
   );
   return (
-    <div className="relative z-10">
+    <div className="relative z-10 flex w-full items-center justify-center">
       {canExpand ? (
         <DialogTrigger className="cursor-pointer">{img}</DialogTrigger>
       ) : (
