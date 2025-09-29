@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile UI Showcase Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <div>
+          <h1>Mobile UI Showcase Builder</h1>
+          <p class="app__subtitle">
+            Press <kbd>Enter</kbd> to reveal the control deck and fine-tune your
+            mockups.
+          </p>
+        </div>
+        <button class="app__toggle" type="button" id="openControlsButton">
+          Open tools
+        </button>
+      </header>
+
+      <main class="app__main">
+        <section class="showcase" id="showcase">
+          <div class="phone-list" id="phoneList">
+            <figure class="phone" data-index="0">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='740'%3E%3Crect width='100%25' height='100%25' fill='%231f2937'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='Inter,Arial,sans-serif' font-size='36'%3EPreview%201%3C/text%3E%3C/svg%3E"
+                alt="Mobile UI preview 1"
+                draggable="false"
+              />
+            </figure>
+            <figure class="phone" data-index="1">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='740'%3E%3Crect width='100%25' height='100%25' fill='%231f2937'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='Inter,Arial,sans-serif' font-size='36'%3EPreview%202%3C/text%3E%3C/svg%3E"
+                alt="Mobile UI preview 2"
+                draggable="false"
+              />
+            </figure>
+            <figure class="phone" data-index="2">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='740'%3E%3Crect width='100%25' height='100%25' fill='%231f2937'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='Inter,Arial,sans-serif' font-size='36'%3EPreview%203%3C/text%3E%3C/svg%3E"
+                alt="Mobile UI preview 3"
+                draggable="false"
+              />
+            </figure>
+          </div>
+          <footer class="showcase__footer">
+            <p>
+              Click any phone to swap the screenshot. Your images stay local in
+              this browser.
+            </p>
+          </footer>
+        </section>
+      </main>
+
+      <aside class="controls" id="controls" aria-hidden="true">
+        <header class="controls__header">
+          <h2>Showcase tools</h2>
+          <div class="controls__header-actions">
+            <span class="controls__hint">Press Enter or Esc to toggle</span>
+            <button
+              type="button"
+              class="controls__close"
+              id="closeControlsButton"
+              aria-label="Close tools"
+            >
+              ×
+            </button>
+          </div>
+        </header>
+
+        <form class="controls__form" id="controlsForm" autocomplete="off">
+          <section class="controls__section">
+            <h3>Background</h3>
+            <label class="field">
+              <span class="field__label">Color picker</span>
+              <input type="color" id="backgroundColor" name="backgroundColor" />
+            </label>
+            <label class="field">
+              <span class="field__label">CSS background</span>
+              <input
+                type="text"
+                id="backgroundString"
+                name="backgroundString"
+                placeholder="e.g. linear-gradient(135deg, #1f2937, #111827)"
+              />
+            </label>
+          </section>
+
+          <section class="controls__section">
+            <h3>Layout</h3>
+            <label class="field field--range">
+              <div class="field__meta">
+                <span class="field__label">Phone scale</span>
+                <output id="scaleValue"></output>
+              </div>
+              <input
+                type="range"
+                min="0.5"
+                max="1.4"
+                step="0.01"
+                id="phoneScale"
+                name="phoneScale"
+              />
+            </label>
+            <label class="field field--range">
+              <div class="field__meta">
+                <span class="field__label">Gap</span>
+                <output id="gapValue"></output>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="160"
+                step="1"
+                id="phoneGap"
+                name="phoneGap"
+              />
+            </label>
+
+            <label class="field">
+              <span class="field__label">Alignment</span>
+              <select id="alignment" name="alignment">
+                <option value="flat">Straight line</option>
+                <option value="rise">Increasing</option>
+                <option value="fall">Decreasing</option>
+                <option value="center">Center focus</option>
+              </select>
+            </label>
+
+            <label class="field field--range">
+              <div class="field__meta">
+                <span class="field__label">Alignment offset</span>
+                <output id="alignmentOffsetValue"></output>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="160"
+                step="1"
+                id="alignmentOffset"
+                name="alignmentOffset"
+              />
+            </label>
+          </section>
+
+          <section class="controls__section">
+            <h3>Shadows</h3>
+            <label class="field">
+              <span class="field__label">CSS shadow</span>
+              <input
+                type="text"
+                id="shadow"
+                name="shadow"
+                placeholder="e.g. 0 40px 80px rgba(17, 24, 39, 0.45)"
+              />
+            </label>
+          </section>
+
+          <section class="controls__section controls__section--profiles">
+            <h3>Profiles</h3>
+            <label class="field">
+              <span class="field__label">Saved profiles</span>
+              <select id="profileSelect" name="profileSelect"></select>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Profile name</span>
+              <input
+                type="text"
+                id="profileName"
+                name="profileName"
+                placeholder="profile-123456"
+              />
+            </label>
+
+            <div class="controls__actions">
+              <button type="button" id="newProfileButton">New profile</button>
+              <button type="button" id="loadProfileButton">Load profile</button>
+              <button type="button" id="saveProfileButton">Save profile</button>
+              <button
+                type="button"
+                id="deleteProfileButton"
+                class="controls__delete"
+              >
+                Delete
+              </button>
+            </div>
+          </section>
+        </form>
+      </aside>
+    </div>
+
+    <input
+      type="file"
+      accept="image/*"
+      id="imagePicker"
+      class="visually-hidden"
+    />
+    <noscript>
+      <p class="noscript">
+        This showcase builder needs JavaScript. Enable it to customise your
+        layout.
+      </p>
+    </noscript>
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>
