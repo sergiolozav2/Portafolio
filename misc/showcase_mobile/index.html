@@ -16,52 +16,40 @@
     <div class="app">
       <header class="app__header">
         <div>
-          <h1>Mobile UI Showcase Builder</h1>
-          <p class="app__subtitle">
-            Press <kbd>Enter</kbd> to reveal the control deck and fine-tune your
-            mockups.
-          </p>
-        </div>
-        <button class="app__toggle" type="button" id="openControlsButton">
-          Open tools
-        </button>
-      </header>
+            <div class="app">
+              <button class="app__toggle" type="button" id="openControlsButton">
+                Open tools
+              </button>
 
       <main class="app__main">
-        <section class="showcase" id="showcase">
-          <div class="phone-list" id="phoneList">
-            <figure class="phone" data-index="0">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='740'%3E%3Crect width='100%25' height='100%25' fill='%231f2937'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='Inter,Arial,sans-serif' font-size='36'%3EPreview%201%3C/text%3E%3C/svg%3E"
-                alt="Mobile UI preview 1"
-                draggable="false"
-              />
-            </figure>
-            <figure class="phone" data-index="1">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='740'%3E%3Crect width='100%25' height='100%25' fill='%231f2937'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='Inter,Arial,sans-serif' font-size='36'%3EPreview%202%3C/text%3E%3C/svg%3E"
-                alt="Mobile UI preview 2"
-                draggable="false"
-              />
-            </figure>
-            <figure class="phone" data-index="2">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='740'%3E%3Crect width='100%25' height='100%25' fill='%231f2937'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='Inter,Arial,sans-serif' font-size='36'%3EPreview%203%3C/text%3E%3C/svg%3E"
-                alt="Mobile UI preview 3"
-                draggable="false"
-              />
-            </figure>
-          </div>
-          <footer class="showcase__footer">
-            <p>
-              Click any phone to swap the screenshot. Your images stay local in
-              this browser.
-            </p>
-          </footer>
-        </section>
-      </main>
+              <section class="showcase" id="showcase">
+                <div class="phone-list" id="phoneList">
+                  <figure class="phone" data-index="0">
+                    <img
+                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='740'%3E%3Crect width='100%25' height='100%25' fill='%231f2937'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='Inter,Arial,sans-serif' font-size='36'%3EPreview%201%3C/text%3E%3C/svg%3E"
+                      alt="Mobile UI preview 1"
+                      draggable="false"
+                    />
+                  </figure>
+                  <figure class="phone" data-index="1">
+                    <img
+                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='740'%3E%3Crect width='100%25' height='100%25' fill='%231f2937'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='Inter,Arial,sans-serif' font-size='36'%3EPreview%202%3C/text%3E%3C/svg%3E"
+                      alt="Mobile UI preview 2"
+                      draggable="false"
+                    />
+                  </figure>
+                  <figure class="phone" data-index="2">
+                    <img
+                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='740'%3E%3Crect width='100%25' height='100%25' fill='%231f2937'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='Inter,Arial,sans-serif' font-size='36'%3EPreview%203%3C/text%3E%3C/svg%3E"
+                      alt="Mobile UI preview 3"
+                      draggable="false"
+                    />
+                  </figure>
+                </div>
+              </section>
+                    </main>
 
-      <aside class="controls" id="controls" aria-hidden="true">
+     <aside class="controls" id="controls" aria-hidden="true">
         <header class="controls__header">
           <h2>Showcase tools</h2>
           <div class="controls__header-actions">

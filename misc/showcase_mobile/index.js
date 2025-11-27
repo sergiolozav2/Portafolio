@@ -7,6 +7,8 @@ const PLACEHOLDER_IMAGES = [
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='740'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2311222f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g3)'/%3E%3Cg fill='%23ffffff' font-family='Inter,Arial,sans-serif' text-anchor='middle'%3E%3Ctext x='50%25' y='46%25' font-size='56'%3EMobile%3C/text%3E%3Ctext x='50%25' y='54%25' font-size='42' opacity='0.72'%3EPreview%203%3C/text%3E%3C/g%3E%3C/svg%3E",
 ];
 
+const PHONE_BASE_WIDTH = 360;
+
 const defaultSettings = {
   background: "linear-gradient(135deg, #1f2937, #0f172a)",
   backgroundColor: "#1f2937",
@@ -247,9 +249,15 @@ function applySettingsToDom(settings) {
     normalized.alignment,
     normalized.alignmentOffset,
   );
+  const targetWidth = `${(PHONE_BASE_WIDTH * normalized.scale).toFixed(2)}px`;
   phoneFigures.forEach((figure, index) => {
     const offset = offsets[index] ?? 0;
-    figure.style.transform = `translateY(${offset}px) scale(${normalized.scale})`;
+    if (Math.abs(normalized.scale - 1) < 0.001) {
+      figure.style.removeProperty("--phone-width");
+    } else {
+      figure.style.setProperty("--phone-width", targetWidth);
+    }
+    figure.style.transform = `translateY(${offset}px)`;
     figure.style.boxShadow = normalized.shadow;
   });
 

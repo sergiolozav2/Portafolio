@@ -20,7 +20,7 @@ export function ProjectsSection() {
             },
           ]}
           description={t("projects_soyyo_desc")}
-          skills={["React", "HTML", "CSS", "Jest", "Git"]}
+          skills={["React", "HTML", "CSS", "Jest", "Git", "UI/UX"]}
         />
 
         <ProjectCard
