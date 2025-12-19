@@ -67,6 +67,31 @@
 
         <form class="controls__form" id="controlsForm" autocomplete="off">
           <section class="controls__section">
+            <h3>Mode</h3>
+            <label class="field field--toggle">
+              <div class="field__meta">
+                <span class="field__label">Display mode</span>
+                <span class="field__value" id="modeValue">Mobile</span>
+              </div>
+              <div class="toggle">
+                <input type="checkbox" id="desktopMode" name="desktopMode" />
+                <span class="toggle__slider"></span>
+                <span class="toggle__label toggle__label--left">Mobile</span>
+                <span class="toggle__label toggle__label--right">Desktop</span>
+              </div>
+            </label>
+            <label class="field">
+              <span class="field__label">Aspect ratio (CSS value)</span>
+              <input
+                type="text"
+                id="aspectRatio"
+                name="aspectRatio"
+                placeholder="e.g. 16 / 9 or 360 / 740"
+              />
+            </label>
+          </section>
+
+          <section class="controls__section">
             <h3>Background</h3>
             <label class="field">
               <span class="field__label">Color picker</span>
@@ -153,6 +178,15 @@
             </label>
           </section>
 
+          <section class="controls__section">
+            <h3>Screenshot</h3>
+            <div class="controls__actions">
+              <button type="button" id="screenshotButton" class="controls__screenshot">
+                📸 Take Screenshot (Ctrl+S)
+              </button>
+            </div>
+          </section>
+
           <section class="controls__section controls__section--profiles">
             <h3>Profiles</h3>
             <label class="field">
@@ -199,6 +233,7 @@
         layout.
       </p>
     </noscript>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="./index.js" type="module"></script>
   </body>
 </html>

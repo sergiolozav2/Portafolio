@@ -12,7 +12,15 @@ function Dialog({
 function DialogTrigger({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Trigger>) {
-  return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />;
+  const { className, ...rest } = props;
+  const combinedClassName = cn("ring-0 outline-0", className);
+  return (
+    <DialogPrimitive.Trigger
+      data-slot="dialog-trigger"
+      {...rest}
+      className={combinedClassName}
+    />
+  );
 }
 
 function DialogPortal({
@@ -29,13 +37,21 @@ function DialogClose({
 
 function DialogOverlay({
   className,
+  disableAnimation = false,
+  disableBackground = false,
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Overlay>) {
+}: React.ComponentProps<typeof DialogPrimitive.Overlay> & {
+  disableAnimation?: boolean;
+  disableBackground?: boolean;
+}) {
   return (
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        "fixed inset-0 z-50",
+        !disableBackground && "bg-black/50",
+        !disableAnimation &&
+          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         className,
       )}
       {...props}
@@ -47,17 +63,29 @@ function DialogContent({
   className,
   children,
   showCloseButton = true,
+  disableAnimation = false,
+  disableOutline = false,
+  disableBackground = false,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean;
+  disableAnimation?: boolean;
+  disableOutline?: boolean;
+  disableBackground?: boolean;
 }) {
   return (
     <DialogPortal data-slot="dialog-portal">
-      <DialogOverlay />
+      <DialogOverlay
+        disableAnimation={disableAnimation}
+        disableBackground={disableBackground}
+      />
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed inset-x-12 top-[50%] z-50 mx-auto flex translate-y-[-50%] gap-4 rounded-lg p-6 shadow-lg duration-200",
+          "bg-background fixed inset-x-12 top-[50%] z-50 mx-auto flex translate-y-[-50%] gap-4 rounded-lg p-6 shadow-lg",
+          disableOutline ? "ring-0 outline-0" : "border border-stone-700/50",
+          !disableAnimation &&
+            "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 duration-200",
           className,
         )}
         {...props}

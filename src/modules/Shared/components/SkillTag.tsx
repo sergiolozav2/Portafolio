@@ -43,6 +43,19 @@ function mapSkillToColor(name: string) {
       AWS: "#e27c09",
       "Github Actions": "#44403c",
       Playwright: "#ed2d49",
+      TypeScript: "#3178c6",
+      Hono: "#e36002",
+      Keycloak: "#008aaa",
+      MUI: "#007fff",
+      Vitest: "#729b1b",
+      PostgreSQL: "#336791",
+      "TanStack Start": "#ff4154",
+      tRPC: "#398ccb",
+      "Huawei Cloud": "#c00",
+      DaisyUI: "#1ad1a5",
+      "Carbon Design System": "#161616",
+      PHP: "#777bb4",
+      Kadence: "#2184f9",
     }[name] ?? "#0e7490"
   );
 }

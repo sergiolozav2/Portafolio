@@ -100,9 +100,12 @@ body:hover .app__toggle,
     flex-wrap: wrap;
 }
 
+.phone-list--desktop {
+    gap: 0;
+}
+
 .phone {
     width: min(var(--phone-width, var(--phone-base-width)), 90vw);
-    aspect-ratio: 360 / 740;
     border-radius: 40px;
     overflow: hidden;
     box-shadow: 0 60px 80px rgba(15, 23, 42, 0.45);
@@ -110,6 +113,15 @@ body:hover .app__toggle,
         border var(--transition);
     transform-origin: center;
     cursor: pointer;
+}
+
+.phone-list--desktop .phone {
+    width: min(var(--desktop-width, 1200px), 85vw);
+    border-radius: 24px;
+}
+
+.phone-list--desktop .phone:not(:first-child) {
+    display: none;
 }
 
 .phone:hover {
@@ -321,6 +333,86 @@ output {
 
 .controls__delete:hover {
     background: rgba(248, 113, 113, 0.26);
+}
+
+.controls__screenshot {
+    grid-column: 1 / -1;
+    background: rgba(34, 197, 94, 0.14);
+    border-color: rgba(34, 197, 94, 0.3);
+    font-size: 0.95rem;
+}
+
+.controls__screenshot:hover {
+    background: rgba(34, 197, 94, 0.24);
+}
+
+.field--toggle {
+    gap: 12px;
+}
+
+.field__value {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.toggle {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    cursor: pointer;
+    transition: background var(--transition);
+}
+
+.toggle:hover {
+    background: rgba(15, 23, 42, 0.95);
+}
+
+.toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.toggle__slider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: rgba(56, 189, 248, 0.24);
+    border-radius: 8px;
+    transition: transform var(--transition), background var(--transition);
+    z-index: 1;
+}
+
+.toggle input:checked~.toggle__slider {
+    transform: translateX(100%);
+    background: rgba(56, 189, 248, 0.32);
+}
+
+.toggle__label {
+    flex: 1;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: color var(--transition);
+    z-index: 2;
+    position: relative;
+}
+
+.toggle input:not(:checked)~.toggle__label--left,
+.toggle input:checked~.toggle__label--right {
+    color: var(--text-primary);
 }
 
 .visually-hidden {

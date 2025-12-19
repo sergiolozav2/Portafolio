@@ -7,7 +7,11 @@ const PLACEHOLDER_IMAGES = [
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='740'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2311222f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g3)'/%3E%3Cg fill='%23ffffff' font-family='Inter,Arial,sans-serif' text-anchor='middle'%3E%3Ctext x='50%25' y='46%25' font-size='56'%3EMobile%3C/text%3E%3Ctext x='50%25' y='54%25' font-size='42' opacity='0.72'%3EPreview%203%3C/text%3E%3C/g%3E%3C/svg%3E",
 ];
 
+const DESKTOP_PLACEHOLDER =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000'%3E%3Cdefs%3E%3ClinearGradient id='gd' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2338bdf8'/%3E%3Cstop offset='100%25' stop-color='%2317253b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23gd)'/%3E%3Cg fill='%23ffffff' font-family='Inter,Arial,sans-serif' text-anchor='middle'%3E%3Ctext x='50%25' y='46%25' font-size='72'%3EDesktop%3C/text%3E%3Ctext x='50%25' y='54%25' font-size='48' opacity='0.72'%3EPreview%3C/text%3E%3C/g%3E%3C/svg%3E";
+
 const PHONE_BASE_WIDTH = 360;
+const DESKTOP_BASE_WIDTH = 1200;
 
 const defaultSettings = {
   background: "linear-gradient(135deg, #1f2937, #0f172a)",
@@ -18,6 +22,9 @@ const defaultSettings = {
   alignmentOffset: 26,
   shadow: "0 60px 80px rgba(15, 23, 42, 0.45)",
   images: [...PLACEHOLDER_IMAGES],
+  desktopMode: false,
+  mobileAspectRatio: "360 / 740",
+  desktopAspectRatio: "16 / 10",
 };
 
 const showcase = document.getElementById("showcase");
@@ -32,6 +39,10 @@ const controlsForm = document.getElementById("controlsForm");
 
 const backgroundColorInput = document.getElementById("backgroundColor");
 const backgroundStringInput = document.getElementById("backgroundString");
+const desktopModeInput = document.getElementById("desktopMode");
+const modeValueOutput = document.getElementById("modeValue");
+const aspectRatioInput = document.getElementById("aspectRatio");
+
 const phoneScaleInput = document.getElementById("phoneScale");
 const phoneGapInput = document.getElementById("phoneGap");
 const alignmentSelect = document.getElementById("alignment");
@@ -48,6 +59,8 @@ const newProfileButton = document.getElementById("newProfileButton");
 const saveProfileButton = document.getElementById("saveProfileButton");
 const loadProfileButton = document.getElementById("loadProfileButton");
 const deleteProfileButton = document.getElementById("deleteProfileButton");
+
+const screenshotButton = document.getElementById("screenshotButton");
 
 const imagePicker = document.getElementById("imagePicker");
 
@@ -82,6 +95,28 @@ function connectEventListeners() {
   closeControlsButton.addEventListener("click", closeControls);
 
   controlsForm.addEventListener("submit", (event) => event.preventDefault());
+
+  desktopModeInput.addEventListener("change", () => {
+    currentSettings.desktopMode = desktopModeInput.checked;
+    applySettingsToDom(currentSettings);
+    applySettingsToInputs(currentSettings);
+    updateModeOutput(currentSettings.desktopMode);
+  });
+
+  aspectRatioInput.addEventListener("input", () => {
+    const value = aspectRatioInput.value.trim();
+    if (currentSettings.desktopMode) {
+      currentSettings.desktopAspectRatio =
+        value || defaultSettings.desktopAspectRatio;
+    } else {
+      currentSettings.mobileAspectRatio =
+        value || defaultSettings.mobileAspectRatio;
+    }
+    applySettingsToDom(currentSettings);
+    aspectRatioInput.value = currentSettings.desktopMode
+      ? currentSettings.desktopAspectRatio
+      : currentSettings.mobileAspectRatio;
+  });
 
   backgroundColorInput.addEventListener("input", () => {
     const color = backgroundColorInput.value || defaultSettings.backgroundColor;
@@ -204,6 +239,10 @@ function connectEventListeners() {
       localStorage.removeItem(LAST_PROFILE_KEY);
     }
   });
+
+  screenshotButton.addEventListener("click", () => {
+    takeScreenshot();
+  });
 }
 
 function handleGlobalShortcut(event) {
@@ -219,6 +258,9 @@ function handleGlobalShortcut(event) {
     if (isControlsOpen()) {
       closeControls();
     }
+  } else if (event.key === "s" && event.ctrlKey) {
+    event.preventDefault();
+    takeScreenshot();
   }
 }
 
@@ -245,17 +287,45 @@ function applySettingsToDom(settings) {
   showcase.style.background = normalized.background;
   phoneList.style.gap = `${normalized.gap}px`;
 
+  // Toggle desktop mode class
+  if (normalized.desktopMode) {
+    phoneList.classList.add("phone-list--desktop");
+  } else {
+    phoneList.classList.remove("phone-list--desktop");
+  }
+
   const offsets = computeOffsets(
     normalized.alignment,
     normalized.alignmentOffset,
   );
-  const targetWidth = `${(PHONE_BASE_WIDTH * normalized.scale).toFixed(2)}px`;
+
+  const baseWidth = normalized.desktopMode
+    ? DESKTOP_BASE_WIDTH
+    : PHONE_BASE_WIDTH;
+  const targetWidth = `${(baseWidth * normalized.scale).toFixed(2)}px`;
+  const aspectRatio = normalized.desktopMode
+    ? normalized.desktopAspectRatio
+    : normalized.mobileAspectRatio;
+
   phoneFigures.forEach((figure, index) => {
     const offset = offsets[index] ?? 0;
+
+    // Set aspect ratio
+    figure.style.aspectRatio = aspectRatio;
+
     if (Math.abs(normalized.scale - 1) < 0.001) {
-      figure.style.removeProperty("--phone-width");
+      if (normalized.desktopMode) {
+        figure.style.setProperty("--desktop-width", `${DESKTOP_BASE_WIDTH}px`);
+      } else {
+        figure.style.removeProperty("--phone-width");
+        figure.style.removeProperty("--desktop-width");
+      }
     } else {
-      figure.style.setProperty("--phone-width", targetWidth);
+      if (normalized.desktopMode) {
+        figure.style.setProperty("--desktop-width", targetWidth);
+      } else {
+        figure.style.setProperty("--phone-width", targetWidth);
+      }
     }
     figure.style.transform = `translateY(${offset}px)`;
     figure.style.boxShadow = normalized.shadow;
@@ -272,6 +342,10 @@ function applySettingsToDom(settings) {
 
 function applySettingsToInputs(settings) {
   const normalized = normalizeSettings(settings);
+  desktopModeInput.checked = normalized.desktopMode;
+  aspectRatioInput.value = normalized.desktopMode
+    ? normalized.desktopAspectRatio
+    : normalized.mobileAspectRatio;
   backgroundColorInput.value = normalized.backgroundColor;
   backgroundStringInput.value = normalized.background;
 
@@ -281,9 +355,14 @@ function applySettingsToInputs(settings) {
   alignmentOffsetInput.value = normalized.alignmentOffset.toString();
   shadowInput.value = normalized.shadow;
 
+  updateModeOutput(normalized.desktopMode);
   updateScaleOutput(normalized.scale);
   updateGapOutput(normalized.gap);
   updateAlignmentOffsetOutput(normalized.alignmentOffset);
+}
+
+function updateModeOutput(desktopMode = currentSettings.desktopMode) {
+  modeValueOutput.textContent = desktopMode ? "Desktop" : "Mobile";
 }
 
 function updateScaleOutput(value = currentSettings.scale) {
@@ -478,6 +557,19 @@ function normalizeSettings(settings) {
     tryExtractHexColor(safe.backgroundColor) ||
     tryExtractHexColor(resolvedBackground) ||
     defaultSettings.backgroundColor;
+  const desktopMode =
+    typeof safe.desktopMode === "boolean"
+      ? safe.desktopMode
+      : defaultSettings.desktopMode;
+  const mobileAspectRatio =
+    typeof safe.mobileAspectRatio === "string" && safe.mobileAspectRatio.trim()
+      ? safe.mobileAspectRatio.trim()
+      : defaultSettings.mobileAspectRatio;
+  const desktopAspectRatio =
+    typeof safe.desktopAspectRatio === "string" &&
+    safe.desktopAspectRatio.trim()
+      ? safe.desktopAspectRatio.trim()
+      : defaultSettings.desktopAspectRatio;
   const scale = clamp(parseNumber(safe.scale, defaultSettings.scale), 0.3, 2);
   const gap = clamp(parseNumber(safe.gap, defaultSettings.gap), 0, 320);
   const alignment = ["flat", "rise", "fall", "center"].includes(safe.alignment)
@@ -501,6 +593,9 @@ function normalizeSettings(settings) {
   return {
     background: resolvedBackground,
     backgroundColor: resolvedColor,
+    desktopMode,
+    mobileAspectRatio,
+    desktopAspectRatio,
     scale,
     gap,
     alignment,
@@ -537,6 +632,138 @@ function isFormElement(element) {
   }
   const tag = element.tagName;
   return tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+}
+
+async function takeScreenshot() {
+  try {
+    // Hide controls before screenshot
+    const wasOpen = isControlsOpen();
+    if (wasOpen) {
+      closeControls();
+    }
+
+    // Hide the toggle button
+    openControlsButton.style.opacity = "0";
+
+    // Wait for animations to complete
+    await new Promise((resolve) => setTimeout(resolve, 300));
+
+    // Use html2canvas library if available, otherwise use native screenshot API
+    if (typeof html2canvas !== "undefined") {
+      const canvas = await html2canvas(showcase, {
+        backgroundColor: null,
+        scale: 2,
+        logging: false,
+        useCORS: true,
+        allowTaint: true,
+        windowWidth: showcase.scrollWidth,
+        windowHeight: showcase.scrollHeight,
+        scrollX: 0,
+        scrollY: 0,
+        x: 0,
+        y: 0,
+        width: showcase.offsetWidth,
+        height: showcase.offsetHeight,
+      });
+
+      canvas.toBlob(
+        (blob) => {
+          if (blob) {
+            downloadScreenshot(blob);
+          }
+        },
+        "image/jpeg",
+        0.95,
+      );
+    } else {
+      // Fallback: try to use the native screenshot API (not widely supported)
+      // Create a canvas manually
+      const canvas = document.createElement("canvas");
+      const rect = showcase.getBoundingClientRect();
+      canvas.width = rect.width * 2;
+      canvas.height = rect.height * 2;
+      const ctx = canvas.getContext("2d");
+
+      if (ctx) {
+        ctx.scale(2, 2);
+
+        // Draw background
+        const bgStyle = window.getComputedStyle(showcase).background;
+        ctx.fillStyle = bgStyle || currentSettings.background;
+        ctx.fillRect(0, 0, rect.width, rect.height);
+
+        // Draw images
+        const imagePromises = Array.from(
+          phoneList.querySelectorAll(".phone img"),
+        )
+          .filter((img) => {
+            const figure = img.closest(".phone");
+            return figure && window.getComputedStyle(figure).display !== "none";
+          })
+          .map((img) => {
+            return new Promise((resolve) => {
+              if (img.complete && img.naturalHeight !== 0) {
+                resolve(img);
+              } else {
+                img.onload = () => resolve(img);
+                img.onerror = () => resolve(null);
+              }
+            });
+          });
+
+        const loadedImages = await Promise.all(imagePromises);
+
+        loadedImages.forEach((img) => {
+          if (img) {
+            const imgRect = img.getBoundingClientRect();
+            const x = imgRect.left - rect.left;
+            const y = imgRect.top - rect.top;
+            ctx.drawImage(img, x, y, imgRect.width, imgRect.height);
+          }
+        });
+
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              downloadScreenshot(blob);
+            }
+          },
+          "image/jpeg",
+          0.95,
+        );
+      }
+    }
+
+    // Restore UI
+    openControlsButton.style.opacity = "";
+    if (wasOpen) {
+      openControls();
+    }
+  } catch (error) {
+    console.error("Screenshot failed:", error);
+    alert(
+      "Screenshot failed. Please try again or use your browser's built-in screenshot tool.",
+    );
+
+    // Restore UI on error
+    openControlsButton.style.opacity = "";
+  }
+}
+
+function downloadScreenshot(blob) {
+  const timestamp = Date.now();
+  const mode = currentSettings.desktopMode ? "desktop" : "mobile";
+  const filename = `showcase_${mode}_${timestamp}.jpg`;
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  link.style.display = "none";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 }
 
 init();
