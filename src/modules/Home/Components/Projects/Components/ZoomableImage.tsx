@@ -48,7 +48,7 @@ export function ZoomableImage({ src, alt, className }: ZoomableImageProps) {
       </DialogTrigger>
 
       <DialogContent
-        className="flex max-h-screen max-w-[95vw] items-center justify-center border-0 bg-transparent p-0 shadow-none"
+        className="right-2! left-2! flex max-h-screen items-center justify-center border-0 bg-transparent p-0 shadow-none md:max-w-[95vw]"
         showCloseButton={false}
         disableAnimation={true}
         disableOutline={true}
@@ -68,7 +68,7 @@ export function ZoomableImage({ src, alt, className }: ZoomableImageProps) {
               layoutId={`image-${src}`}
               src={src}
               alt={alt}
-              className="h-auto max-h-[90vh] w-auto max-w-full cursor-zoom-out rounded-lg object-contain shadow-2xl"
+              className="h-auto max-h-[90vh] w-full max-w-full cursor-zoom-out rounded-lg object-contain shadow-2xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

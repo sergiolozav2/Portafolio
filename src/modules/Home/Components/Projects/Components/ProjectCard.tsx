@@ -83,9 +83,9 @@ export function ProjectCard(props: ProjectCardProps) {
         className="data-[state=open]:fade-in-0 bg-primary/85 data-[state=open]:zoom-in-95 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 inset-x-2 flex max-w-screen-xl flex-col items-center rounded-xl border border-stone-700/50 px-8 backdrop-blur md:inset-x-8"
         showCloseButton
       >
-        <div className="grid h-full items-center gap-6 overflow-y-auto md:grid-cols-[minmax(0,1.5fr)_1fr] md:gap-x-8">
-          <div className="flex h-full flex-col gap-4">
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-stone-900">
+        <div className="grid h-full w-full items-center gap-6 overflow-y-auto md:grid-cols-[minmax(0,1.5fr)_1fr] md:gap-x-8">
+          <div className="flex h-full w-full max-w-full min-w-0 flex-col gap-4">
+            <div className="relative overflow-hidden rounded-lg bg-stone-900 not-md:h-60 md:aspect-[16/10]">
               {hasImages ? (
                 <>
                   {images.map((image, index) => {
@@ -129,7 +129,7 @@ export function ProjectCard(props: ProjectCardProps) {
                 </div>
               )}
             </div>
-            <div className="flex gap-3 overflow-x-auto select-none">
+            <div className="flex w-full gap-3 overflow-x-auto select-none">
               {images.map((image, index) => (
                 <button
                   key={`${image.url}-${index}`}
