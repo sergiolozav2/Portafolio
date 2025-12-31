@@ -1,5 +1,4 @@
 import { AboutMeSection } from "./Components/AboutMe/AboutMeSection";
-import { ExperienceSection } from "./Components/Experience/ExperienceSection";
 import { StarsBackground } from "../Shared/components/StarsBackground";
 import { WelcomeSection } from "./Components/Welcome/WelcomeSection";
 import "./styles.css";
