@@ -16,15 +16,18 @@ import { ProjectPreviewImage } from "./ProjectImage";
 import { ZoomableImage } from "./ZoomableImage";
 import { ImageType } from "../Types/ImageType";
 
+export type BadgeType = "production" | "project";
+
 type ProjectCardProps = {
   title: string;
   description: string;
   images: ImageType[];
   skills: string[];
+  badge?: BadgeType;
 };
 
 export function ProjectCard(props: ProjectCardProps) {
-  const { images, title, description, skills } = props;
+  const { images, title, description, skills, badge } = props;
   const [open, setOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
@@ -66,6 +69,7 @@ export function ProjectCard(props: ProjectCardProps) {
           <ProjectPreviewImage
             images={images}
             title={title}
+            badge={badge}
             imageClassName="transition-transform duration-500 group-hover:scale-[1.07]"
           />
           <div className="mt-3 flex flex-col gap-2">

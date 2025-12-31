@@ -13,6 +13,7 @@ export function ProjectsSection() {
       <div className="grid grid-cols-1 gap-12 sm:grid-cols-[repeat(auto-fit,minmax(350px,1fr))]">
         <ProjectCard
           title={t("projects_cinavar_title")}
+          badge="production"
           images={[
             {
               url: "/assets/images/projects/cinavar-2.png",
@@ -44,6 +45,7 @@ export function ProjectsSection() {
         />
         <ProjectCard
           title={t("projects_chancho_title")}
+          badge="production"
           images={[
             {
               url: "/assets/images/projects/chancho-1.png",
@@ -73,8 +75,67 @@ export function ProjectsSection() {
             "PostgreSQL",
           ]}
         />
+
+        <ProjectCard
+          title={t("projects_soyyo_title")}
+          badge="production"
+          images={[
+            {
+              url: "/assets/images/projects/soyyo-1.png",
+              alt: t("projects_soyyo_img_alt"),
+            },
+
+            {
+              url: "/assets/images/projects/soyyo-project.png",
+              alt: t("projects_soyyo_img_alt"),
+            },
+          ]}
+          description={t("projects_soyyo_desc")}
+          skills={["React", "HTML", "CSS", "Jest", "Git"]}
+        />
+        <ProjectCard
+          title={t("projects_interpares_title")}
+          badge="production"
+          images={[
+            {
+              url: "/assets/images/projects/interpares-1.png",
+              alt: t("projects_interpares_img_alt"),
+            },
+            {
+              url: "/assets/images/projects/interpares-2.png",
+              alt: t("projects_interpares_img_alt"),
+            },
+            {
+              url: "/assets/images/projects/interpares-3.png",
+              alt: t("projects_interpares_img_alt"),
+            },
+          ]}
+          description={t("projects_interpares_desc")}
+          skills={["Javascript", "HTML", "CSS", "Carbon Design System"]}
+        />
+        <ProjectCard
+          title={t("projects_rmwear_title")}
+          badge="production"
+          images={[
+            {
+              url: "/assets/images/projects/rmwear-3.jpg",
+              alt: t("projects_rmwear_img_alt"),
+            },
+            {
+              url: "/assets/images/projects/rmwear-1.jpg",
+              alt: t("projects_rmwear_img_alt"),
+            },
+            {
+              url: "/assets/images/projects/rmwear-2.jpg",
+              alt: t("projects_rmwear_img_alt"),
+            },
+          ]}
+          description={t("projects_rmwear_desc")}
+          skills={["Wordpress", "PHP", "CSS", "HTML", "Kadence"]}
+        />
         <ProjectCard
           title={t("projects_sumak_title")}
+          badge="project"
           images={[
             {
               url: "/assets/images/projects/sumak-3.png",
@@ -97,61 +158,8 @@ export function ProjectsSection() {
           skills={["React", "TanStack Start", "Express", "tRPC", "PostgreSQL"]}
         />
         <ProjectCard
-          title={t("projects_soyyo_title")}
-          images={[
-            {
-              url: "/assets/images/projects/soyyo-1.png",
-              alt: t("projects_soyyo_img_alt"),
-            },
-
-            {
-              url: "/assets/images/projects/soyyo-project.png",
-              alt: t("projects_soyyo_img_alt"),
-            },
-          ]}
-          description={t("projects_soyyo_desc")}
-          skills={["React", "HTML", "CSS", "Jest", "Git"]}
-        />
-        <ProjectCard
-          title={t("projects_interpares_title")}
-          images={[
-            {
-              url: "/assets/images/projects/interpares-1.png",
-              alt: t("projects_interpares_img_alt"),
-            },
-            {
-              url: "/assets/images/projects/interpares-2.png",
-              alt: t("projects_interpares_img_alt"),
-            },
-            {
-              url: "/assets/images/projects/interpares-3.png",
-              alt: t("projects_interpares_img_alt"),
-            },
-          ]}
-          description={t("projects_interpares_desc")}
-          skills={["Javascript", "HTML", "CSS", "Carbon Design System"]}
-        />
-        <ProjectCard
-          title={t("projects_rmwear_title")}
-          images={[
-            {
-              url: "/assets/images/projects/rmwear-3.jpg",
-              alt: t("projects_rmwear_img_alt"),
-            },
-            {
-              url: "/assets/images/projects/rmwear-1.jpg",
-              alt: t("projects_rmwear_img_alt"),
-            },
-            {
-              url: "/assets/images/projects/rmwear-2.jpg",
-              alt: t("projects_rmwear_img_alt"),
-            },
-          ]}
-          description={t("projects_rmwear_desc")}
-          skills={["Wordpress", "PHP", "CSS", "HTML", "Kadence"]}
-        />
-        <ProjectCard
           title={t("projects_preciosbo_title")}
+          badge="project"
           images={[
             {
               url: "/assets/images/projects/precios-bo-project.png",
@@ -163,6 +171,7 @@ export function ProjectsSection() {
         />
         <ProjectCard
           title={t("projects_micro_title")}
+          badge="project"
           images={[
             {
               url: "/assets/images/projects/micro-project-2.png",
@@ -178,6 +187,7 @@ export function ProjectsSection() {
         />
         <ProjectCard
           title={t("projects_tts_title")}
+          badge="project"
           images={[
             {
               url: "/assets/images/projects/tts-project.png",

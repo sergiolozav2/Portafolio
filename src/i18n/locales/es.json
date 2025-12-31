@@ -62,5 +62,7 @@
   "navbar.about": "Acerca de mí",
   "navbar.experience": "Experiencia",
   "navbar.projects": "Portafolio",
-  "skills.title": "Habilidades"
+  "skills.title": "Habilidades",
+  "badge.professional": "Profesional",
+  "badge.project": "Proyecto"
 }
