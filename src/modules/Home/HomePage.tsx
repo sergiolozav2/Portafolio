@@ -13,7 +13,7 @@ export function HomePage() {
       <div
         className={`flex w-full ${containerSpacing} flex-col gap-y-16 lg:flex-row`}
       >
-        <div className="flex w-full justify-center lg:relative lg:min-h-screen">
+        <div className="flex w-full justify-center lg:relative">
           <div className="top-32 flex h-fit w-full sm:min-w-96 lg:sticky">
             <WelcomeSection />
           </div>
@@ -22,7 +22,6 @@ export function HomePage() {
           <div className="flex flex-col items-center gap-16 lg:max-w-xl">
             <AboutMeSection />
             <SkillsSection />
-            <ExperienceSection />
           </div>
         </div>
       </div>

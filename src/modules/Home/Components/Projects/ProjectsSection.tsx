@@ -10,22 +10,19 @@ export function ProjectsSection() {
       id="projects-section"
     >
       <SectionTitle text={`${t("projects_title")}`} />
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-[repeat(auto-fit,minmax(350px,1fr))]">
+      <div className="grid grid-cols-1 gap-12 sm:grid-cols-[repeat(auto-fit,minmax(350px,1fr))]">
         <ProjectCard
           title={t("projects_cinavar_title")}
           images={[
             {
-              url: "/assets/images/projects/cinavar-logo.png",
+              url: "/assets/images/projects/cinavar-2.png",
               alt: t("projects_cinavar_img_alt"),
             },
             {
               url: "/assets/images/projects/cinavar-1.png",
               alt: t("projects_cinavar_img_alt"),
             },
-            {
-              url: "/assets/images/projects/cinavar-2.png",
-              alt: t("projects_cinavar_img_alt"),
-            },
+
             {
               url: "/assets/images/projects/cinavar-3.png",
               alt: t("projects_cinavar_img_alt"),
@@ -42,18 +39,12 @@ export function ProjectsSection() {
             "TypeScript",
             "Node.js",
             "Github Actions",
-            "Playwright",
-            "Vitest",
             "PostgreSQL",
           ]}
         />
         <ProjectCard
           title={t("projects_chancho_title")}
           images={[
-            {
-              url: "/assets/images/projects/chancho-0.png",
-              alt: t("projects_chancho_img_alt"),
-            },
             {
               url: "/assets/images/projects/chancho-1.png",
               alt: t("projects_chancho_img_alt"),
@@ -78,20 +69,13 @@ export function ProjectsSection() {
             "TypeScript",
             "Github Actions",
             "AWS",
-            "Keycloak",
             "MUI",
-            "Playwright",
-            "Vitest",
             "PostgreSQL",
           ]}
         />
         <ProjectCard
           title={t("projects_sumak_title")}
           images={[
-            {
-              url: "/assets/images/projects/sumak-logo.png",
-              alt: t("projects_sumak_img_alt"),
-            },
             {
               url: "/assets/images/projects/sumak-3.png",
               alt: t("projects_sumak_img_alt"),
@@ -110,29 +94,18 @@ export function ProjectsSection() {
             },
           ]}
           description={t("projects_sumak_desc")}
-          skills={[
-            "React",
-            "TanStack Start",
-            "Express",
-            "tRPC",
-            "Huawei Cloud",
-            "PostgreSQL",
-            "DaisyUI",
-          ]}
+          skills={["React", "TanStack Start", "Express", "tRPC", "PostgreSQL"]}
         />
         <ProjectCard
           title={t("projects_soyyo_title")}
           images={[
             {
-              url: "/assets/images/projects/soyyo-logo.jpg",
+              url: "/assets/images/projects/soyyo-1.png",
               alt: t("projects_soyyo_img_alt"),
             },
+
             {
               url: "/assets/images/projects/soyyo-project.png",
-              alt: t("projects_soyyo_img_alt"),
-            },
-            {
-              url: "/assets/images/projects/soyyo-1.png",
               alt: t("projects_soyyo_img_alt"),
             },
           ]}
@@ -142,10 +115,6 @@ export function ProjectsSection() {
         <ProjectCard
           title={t("projects_interpares_title")}
           images={[
-            {
-              url: "/assets/images/projects/interpares-logo.jpg",
-              alt: t("projects_interpares_img_alt"),
-            },
             {
               url: "/assets/images/projects/interpares-1.png",
               alt: t("projects_interpares_img_alt"),
@@ -165,10 +134,6 @@ export function ProjectsSection() {
         <ProjectCard
           title={t("projects_rmwear_title")}
           images={[
-            {
-              url: "/assets/images/projects/rmwear-logo.jpg",
-              alt: t("projects_rmwear_img_alt"),
-            },
             {
               url: "/assets/images/projects/rmwear-3.jpg",
               alt: t("projects_rmwear_img_alt"),
