@@ -9,9 +9,10 @@ import { useTranslation } from "react-i18next";
 
 const Sections = {
   projects: "projects-section",
+  experience: "experience-section",
   about: "about-me-section",
 } as const;
-const sections = [Sections.projects, Sections.about];
+const sections = [Sections.projects, Sections.experience, Sections.about];
 type SectionKeys = (typeof sections)[number];
 
 export function Navbar() {
@@ -59,6 +60,15 @@ export function Navbar() {
               {t("navbar.about")}
             </button>
             {isCurrentSection(Sections.about) && <Divider />}
+          </div>
+          <div>
+            <button
+              className={`cursor-pointer whitespace-nowrap transition-opacity ${isCurrentSection(Sections.experience) ? "opacity-100" : "opacity-80"}`}
+              onClick={() => scrollToSection(Sections.experience)}
+            >
+              {t("navbar.experience")}
+            </button>
+            {isCurrentSection(Sections.experience) && <Divider />}
           </div>
           <div>
             <button

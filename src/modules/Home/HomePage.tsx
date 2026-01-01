@@ -4,6 +4,7 @@ import { WelcomeSection } from "./Components/Welcome/WelcomeSection";
 import "./styles.css";
 import { SkillsSection } from "./Components/SkillsSection";
 import { ProjectsSection } from "./Components/Projects/ProjectsSection";
+import { ExperienceSection } from "./Components/Experience/ExperienceSection";
 
 export function HomePage() {
   const containerSpacing = "max-w-screen-xl mx-auto px-4 py-12 md:px-8";
@@ -21,6 +22,7 @@ export function HomePage() {
           <div className="flex flex-col items-center gap-16 lg:max-w-xl">
             <AboutMeSection />
             <SkillsSection />
+            <ExperienceSection />
           </div>
         </div>
       </div>

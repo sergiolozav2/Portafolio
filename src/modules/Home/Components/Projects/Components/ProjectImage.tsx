@@ -66,7 +66,7 @@ function ProjectBadge({ type }: ProjectBadgeProps) {
     <div
       className={cn(
         "absolute top-2 right-2 z-10 flex items-center gap-1.5 rounded-full px-2 py-1.5 text-xs font-semibold shadow-lg",
-        isProduction ? "bg-purple-600 text-white" : "bg-red-600 text-white",
+        isProduction ? "bg-cyan-700 text-white" : "bg-red-600 text-white",
       )}
     >
       <Icon className="size-4" />
