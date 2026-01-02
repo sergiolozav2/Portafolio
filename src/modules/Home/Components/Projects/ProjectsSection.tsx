@@ -67,7 +67,7 @@ export function ProjectsSection() {
           description={t("projects_chancho_desc")}
           skills={[
             "React",
-            "Hono",
+            "Nest.js",
             "TypeScript",
             "Github Actions",
             "AWS",

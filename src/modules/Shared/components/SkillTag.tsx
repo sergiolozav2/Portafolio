@@ -22,6 +22,7 @@ function mapSkillToColor(name: string) {
       Javascript: "#DC5704",
       HTML: "#BD4027",
       CSS: "#9333ea",
+      "Nest.js": "#EB2F4B",
       Tailwind: "#1d4ed8",
       Git: "#44403c",
       Github: "#57534e",
