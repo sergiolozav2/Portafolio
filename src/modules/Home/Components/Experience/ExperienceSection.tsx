@@ -21,6 +21,7 @@ export function ExperienceSection() {
           ]}
           skills={[
             "React",
+            "Next.js",
             "AWS",
             "Node.js",
             "CSS",
@@ -46,6 +47,7 @@ export function ExperienceSection() {
             "Digital Ocean",
             "Linux",
             "SQL",
+            "MongoDB",
             "Docker",
           ]}
         />

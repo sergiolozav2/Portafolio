@@ -9,6 +9,7 @@ export function SkillsSection() {
       <SectionTitle text={`${t("skills.title")}`} />
       <div className="flex flex-wrap gap-x-2 gap-y-3">
         <SkillTag text="React" />
+        <SkillTag text="Next.js" />
         <SkillTag text="Node.js" />
         <SkillTag text="Javascript" />
         <SkillTag text="C#" />
@@ -19,6 +20,7 @@ export function SkillsSection() {
         <SkillTag text="Git" />
         <SkillTag text="Express" />
         <SkillTag text="SQL" />
+        <SkillTag text="MongoDB" />
         <SkillTag text="Wordpress" />
         <SkillTag text="Elixir" />
         <SkillTag text="HTML" />

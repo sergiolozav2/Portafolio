@@ -40,7 +40,8 @@ export function ProjectsSection() {
             "TypeScript",
             "Node.js",
             "Github Actions",
-            "PostgreSQL",
+            "SQLServer",
+            "MongoDB",
           ]}
         />
         <ProjectCard
