@@ -1,5 +1,4 @@
 import { TypeAnimationText } from "./Components/TypeAnimationText";
-import CvPDF from "../../../../assets/CV-Sergio Loza.pdf";
 import { useTranslation } from "react-i18next";
 
 export function WelcomeSection() {
@@ -18,11 +17,7 @@ export function WelcomeSection() {
       />
       <h2 className="mt-2 max-w-sm text-lg">{t("welcome.subtitle")}</h2>
       <ul className="list-inside list-disc space-y-1 text-lg font-medium text-stone-100">
-        <li className="">
-          <a className="hover:underline" target="_blank" href={CvPDF}>
-            {t("welcome.cv")}
-          </a>
-        </li>
+        <li className=""></li>
         <li className="">
           <a className="hover:underline" target="_blank" href={linkedinUrl}>
             {t("welcome.linkedin")}

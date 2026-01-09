@@ -72,7 +72,7 @@ export function ExperienceSection() {
           title={t("experience_transformacion_title")}
           timeframe={t("experience_transformacion_timeframe")}
           bulletpoints={[t("experience_transformacion_bullet_1")]}
-          skills={["Flutter", "Dart", "Firebase", "Git"]}
+          skills={["React Native", "Firebase", "Git"]}
         />
       </div>
     </section>
