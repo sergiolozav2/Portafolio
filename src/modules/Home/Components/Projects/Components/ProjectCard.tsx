@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
 import {
   Dialog,
@@ -73,7 +73,10 @@ export function ProjectCard(props: ProjectCardProps) {
             imageClassName="transition-transform duration-500 group-hover:scale-[1.07]"
           />
           <div className="mt-3 flex flex-col gap-2">
-            <p className="text-base font-semibold text-stone-50">{title}</p>
+            <p className="flex items-center text-base font-semibold text-stone-50">
+              {title}{" "}
+              <ExternalLink className="ml-1.5 inline-block h-4 w-4 text-white" />
+            </p>
             <div className="flex flex-wrap gap-2">
               {skills.map((skillName, index) => (
                 <SkillTag text={skillName} key={index} />
